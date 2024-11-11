@@ -72,6 +72,12 @@ def _get_cache_opts(level, options):
     if hasattr(options, prefetcher_attr):
         opts["prefetcher"] = _get_hwp(getattr(options, prefetcher_attr))
 
+    delay_attr = f"{level}_delay"
+    if hasattr(options, delay_attr):
+        opts["tag_latency"] = getattr(options, delay_attr)
+        opts["data_latency"] = getattr(options, delay_attr)
+        opts["response_latency"] = getattr(options, delay_attr)
+
     return opts
 
 

@@ -108,6 +108,18 @@ class BiModeBP(BranchPredictor):
     choiceCtrBits = Param.Unsigned(2, "Bits of choice counters")
 
 
+class Perceptron(BranchPredictor):
+    type = "Perceptron"
+    cxx_class = "gem5::branch_prediction::Perceptron"
+    cxx_header = "cpu/pred/perceptron.hh"
+
+    perceptronHistoryLength = Param.Unsigned(
+        16, "Length of perceptron history register"
+    )
+    trainingThreshold = Param.Unsigned(42, "Training Threshold")
+    weightNumBits = Param.Unsigned(8, "Number of bits per weight")
+
+
 class TAGEBase(SimObject):
     type = "TAGEBase"
     cxx_class = "gem5::branch_prediction::TAGEBase"
